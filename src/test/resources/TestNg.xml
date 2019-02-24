@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite">
+    <test name="ChromeTest">
+        <classes>
+            <class name="simple_cucumber.TestRunner"/>
+        </classes>
+    </test>
+</suite>
