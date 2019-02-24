@@ -20,13 +20,12 @@ public class Stepdefs {
     private static final String USER_NAME = "test1";
     private static final User USER = BaseTest.getTestUser(USER_NAME);
 
-    @Before
-    public void initDriver() {
-        driverFactory = DriverFactory.getInstance("firefox", false);
-        webDriver = driverFactory.getDriver();
+    @When("^I start scenario$")
+    public void scenarioStart() {
+        System.out.println("-----------------Start of Scenario-----------------");
     }
 
-    @Given("^I navigate to mail page$")
+    @When("^I navigate to mail page$")
     public void iNavigateToPage() {
         System.out.println("OPEN MAIL PAGE");
         webDriver.get(MAIL_RU);
@@ -53,5 +52,11 @@ public class Stepdefs {
     public void tearDown() {
         driverFactory.close();
         driverFactory.tearDown();
+    }
+
+    @Given("^I open browser ([^\"]*)$")
+    public void iNavigateToMailPageWithBrowser(String browser) {
+        driverFactory = DriverFactory.getInstance(browser, false);
+        webDriver = driverFactory.getDriver();
     }
 }
